@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body  style="height: 3000px">
+<input type="text" id="text1">
+</body>
+<script>
+    window.onload=function () {
+        var oText = document.getElementById('text1');
+
+        oText.onkeydown=function (ev) {
+            var oEvent = ev||event;
+
+            // alert(oEvent.keyCode);
+            //oEvent.keyCode ==32屏蔽滚动条
+            if( oEvent.keyCode ==32 && oEvent.keyCode !=37 && oEvent.keyCode !=39 && oEvent.keyCode !=8 && (oEvent.keyCode<48 || (oEvent.keyCode<96 && oEvent.keyCode>57) || oEvent>105)){
+                return false;
+            }
+        };
+    }
+</script>
+</html>

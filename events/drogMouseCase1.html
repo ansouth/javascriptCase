@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防止鼠标拖拽出界面以及吸附功能</title>
+    <style>
+        #div1{
+            width: 50px;
+            height: 50px;
+            background: #060894;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        #div2{
+            width: 800px;
+            height: 600px;
+            background: #ccc;
+            position: relative;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oDiv = document.getElementById('div1');
+            var oDiv2 = document.getElementById('div2');
+
+            var disX = 0;
+            var disY = 0;
+            oDiv.onmousedown=function (ev) {
+                var oEvent = ev||event;
+                //求出disX的横向距离
+                //1.求出鼠标与物体之间的距离disX、disY
+                //求出disX的横向距离
+                //oEvent.clientX 鼠标的横向位置
+                //oDiv.offsetLeft Div的横向位置
+                disX = oEvent.clientX - oDiv.offsetLeft;
+                disY = oEvent.clientY - oDiv.offsetTop;
+
+                document.onmousemove = function (ev) {
+                    var oEvent = ev||event;
+                    var oLeft=oEvent.clientX - disX;
+                    var oTop=oEvent.clientY - disY;
+                    //求oDiv 的位置
+                    if(oLeft<20){
+                        oLeft=0;
+                    }else if(oLeft>(oDiv2.offsetWidth - oDiv.offsetWidth) - 20){
+                        oLeft = oDiv2.offsetWidth - oDiv.offsetWidth;
+                    }
+                    if(oTop<20){
+                        oTop=0;
+                    }else if(oTop>(oDiv2.offsetHeight - oDiv.offsetHeight) - 20){
+                        oTop = oDiv2.offsetHeight - oDiv.offsetHeight;
+                    }
+                    oDiv.style.left = oLeft + 'px';
+                    oDiv.style.top  = oTop + 'px';
+                };
+                oDiv.onmouseup=function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+                return false;
+            };
+        };
+    </script>
+</head>
+<body>
+<div id="div2">
+    <div id="div1" style="color: #4fff27">20px会吸附</div>
+</div>
+</body>
+</html>
