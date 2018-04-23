@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片裁剪案例</title>
+    <style>
+        body{
+            background: #ccc;
+        }
+        .box{
+           position: absolute;
+            top: 100px;
+            left: 1000px;
+            width: 380px;
+            height: 190px;
+        }
+        .box img{
+            position: absolute;
+            /*z-index: 1;*/
+         }
+        .img1{
+            /*opacity: 0.3;*/
+        }
+        .img2{
+            position: absolute;top: 0;left: 0;
+            clip: rect(0,150px,150px,0);
+        }
+        /*{clip: top,right,bottom,left}*/
+        .main{
+            border: 1px solid #4fff27;
+            position: absolute;
+            width: 150px;
+            height: 150px;
+        }
+        .mainDiv{
+           position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+        }
+        .left_up{
+            left: 0;
+            top: -4px;
+            margin-left: -4px;
+            cursor: nw-resize;
+        }
+        .up{
+            left: 50%;
+            top: -4px;
+            margin-left: -4px;
+            cursor: n-resize;
+        }
+        .right_up{
+            left: 100%;
+            top: -4px;
+            margin-left: -4px;
+            cursor: ne-resize;
+        }
+        .left{
+            left: 0;
+            top: 50%;
+            margin-left: -4px;
+            cursor: ew-resize;
+        }
+        .left_bt{
+            left: 0;
+            bottom: -4px;
+            margin-left: -4px;
+            cursor: ne-resize;
+        }
+        .bottom{
+            left: 50%;
+            bottom: -4px;
+            cursor: ns-resize;
+        }
+        .right_bt{
+           right: -4px;
+            bottom: -4px;
+            cursor: se-resize;
+        }
+        .right{
+        left: 100%;
+        top: 50%;
+        margin-left: -4px;
+        cursor: ew-resize;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <img src="3.jpg" alt="" class="img1">
+    <img src="3.jpg" alt="" id="img2" class="img2">
+    <div class="main" id="main">
+        <div id="left_up" class="mainDiv left_up"></div>
+        <div id="up" class="mainDiv up"></div>
+        <div id="right_up" class="mainDiv right_up"></div>
+        <div id="left" class="mainDiv left"></div>
+        <div id="left_bt" class="mainDiv left_bt"></div>
+        <div id="bottom" class="mainDiv bottom"></div>
+        <div id="right_bt" class="mainDiv right_bt"></div>
+        <div id="right" class="mainDiv right" ></div>
+    </div>
+</div>
+<div id="preview">
+    <!--<img src="3.jpg" alt="" class="img3" id="img3">-->
+</div>
+</body>
+<script src="testes.js"></script>
+</html>
