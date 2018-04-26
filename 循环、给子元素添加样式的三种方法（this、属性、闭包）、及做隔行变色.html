@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 300px;
+            height: 440px;
+            position: relative;
+        }
+        .div1 div{
+            width: 300px;
+            height: 50px;
+            margin-top: 5px;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            background: #9c9c9c;
+        }
+    </style>
+    <script>
+        window.onload=function (ev) {
+            var oDiv = document.getElementById('div1');
+
+            for (var i = 0; i < oDiv.children.length; i++) {
+                // oDiv.children[i].onmouseover=function () {
+                //     oDiv.children[i-1].style.background = 'red';
+                // }
+
+                //1.用闭包方法
+                // (function () {
+                //     var p = i;
+                //     oDiv.children[p].onmouseover=function () {
+                //         oDiv.children[p].style.background = 'red';
+                //     }
+                // })();
+
+                //2.用this方法
+                // oDiv.children[i].onmouseover=function () {
+                //     this.style.background = 'red';
+                //     console.log(this);
+                // };
+                //3.属性
+                // var index = i;
+                // oDiv.children[index].onmouseover = function () {
+                //     this.style.background = 'red';
+                // };
+                //用js取模（求余数）方法，做隔行变色
+                if (index % 2 == 0) {
+                    oDiv.children[index].onmouseover = function () {
+                        this.style.background = 'red';
+                    };
+                }else{
+                    oDiv.children[index].onmouseover = function () {
+                        this.style.background = 'pink';
+                    }
+                }
+                oDiv.children[index].onmouseout = function () {
+                    this.style.background = null;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1" class="div1" style="background: white">
+    <div ></div>
+    <div ></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

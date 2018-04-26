@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            width: 300px;
+            height: 300px;
+            background: #e4d4eb;
+            border: 1px solid black;
+            position: relative;
+            margin: 200px;
+        }
+        .div2{
+            width: 300px;
+            height: 150px;
+            background: #e0a0eb;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        window.onload=function (ev) {
+            var oDiv = document.getElementById('div2');
+            oDiv.onmouseover=function () {
+                startMove(300);
+            };
+            oDiv.onmouseout=function () {
+                startMove(150);
+            }
+        };
+        var  time=null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('div2');
+            clearInterval(time);
+            time=setInterval(function () {
+                var speed=0;
+                if(oDiv.offsetHeight < iTarget){
+                    speed = 10;
+                }else {
+                    speed = -10;
+                }
+                if(oDiv.offsetHeight==iTarget){
+                    clearInterval(time);
+                }else {
+                   oDiv.style.height=oDiv.offsetHeight + speed + 'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+<div id="div1" class="div1">
+    <div class="div2" id="div2"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 300px;
+            height: 440px;
+            position: relative;
+        }
+        .div1 div{
+            width: 300px;
+            height: 50px;
+            margin-top: 5px;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+        }
+        .div1 div:nth-child(1){
+            background: #9c4336;
+        }
+        .div1 div:nth-child(2){
+            background: #4fff27;
+        }
+        .div1 div:nth-child(3){
+            background: #d275c7;
+        }
+        .div1 div:nth-child(4){
+            background: #2a65b2;
+        }
+    </style>
+    <script>
+        window.onload=function (ev) {
+            var oDiv = document.getElementById('div1');
+            var aDiv = oDiv.getElementsByTagName('div');
+            // alert(aDiv.length);
+            for (var i=0;i<aDiv.length;i++){
+                aDiv[i].onclick=function (ev2) {
+                    alert(this.getComputedStyle(background,false));
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1" class="div1" style="background: white">
+    <div ></div>
+    <div ></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

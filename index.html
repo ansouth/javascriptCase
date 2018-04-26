@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室</title>
+    <style>
+        input,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        .chat_frame{
+            position: relative;
+            width: 700px;
+            height: 500px;
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        .chat_frame_top{
+            position: relative;
+            width: 700px;
+            height: 80px;
+            background: #1fff23;
+        }
+        .chat_frame_notes{
+            position: relative;
+            width: 700px;
+            height: 340px;
+            background: #f3ffff;
+        }
+        .chat_frame_mes_ipt{
+            position: relative;
+            width: 700px;
+            height: 80px;
+            background: #cfdfcf;
+        }
+        .chat_frame_mes_ipt .text{
+            position: relative;
+            width: 500px;
+            height: 80px;
+            float: left;
+            box-sizing: border-box;
+        }
+        .chat_frame_mes_ipt .btn{
+            position: relative;
+            width: 200px;
+            height: 80px;
+            float: left;
+            box-sizing: border-box;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="chat_frame">
+    <div class="chat_frame_top">
+
+    </div>
+    <div class="chat_frame_notes" id="incomingChatMessages">
+
+    </div>
+    <div class="chat_frame_mes_ipt">
+        <input class="text" type="text" id="outgoingChatMessage">
+        <input class="btn" type="submit" value="发送" >
+    </div>
+</div>
+</body>
+</html>
