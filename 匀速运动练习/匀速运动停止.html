@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--/*-->
+<!--1.Math.abs(x) 函数返回指定数字 “x“ 的绝对值-->
+<!--2.停止在目标点,最关键点-->
+<!--3.因为本例子是匀速运动停止，所以不要考虑取整，不要与之前的上下取整混淆-->
+<!--*/-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动1</title>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;background: #1fff23;
+            position: absolute;
+            left: 600px;
+            top: 100px;
+        }
+        .div3{
+            width: 1px;
+            height: 300px;
+            position: absolute;
+            left: 100px;
+            background: black;
+        }
+        .div2{
+            width: 1px;
+            height: 300px;
+            position: absolute;
+            left: 400px;
+            background: black;
+        }
+    </style>
+    <script>
+        var time =null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('div1');
+             clearInterval(time);
+            time=setInterval(function () {
+               var speed = 0;
+               if(oDiv.offsetLeft<iTarget){
+                   speed=111;
+               }else {
+                   speed=-111;
+               }
+               // oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+               // document.title=oDiv.style.left +','+speed;
+                if(Math.abs(iTarget - oDiv.offsetLeft) <=speed){
+                      clearInterval(time);
+                    //........解决停止在目标点,最关键点
+                    oDiv.style.left=iTarget + 'px';
+                }else {
+                    oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+<input type="submit" id="btn" value="开始运动100" onclick="startMove(100)">
+<input type="submit" id="btn2" value="开始运动400" onclick="startMove(400)">
+<div class="div1" id="div1"></div>
+<div class="div2" id="div2"></div>
+<div class="div3" id="div3"></div>
+</body>
+</html>

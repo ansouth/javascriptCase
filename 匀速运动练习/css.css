@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.public_bar{
+    position: relative;
+    width: 500px;
+    height: 60px;
+    background: #9c9c9c;
+    margin: 20px 0 0 50px;
+}
+.public_bar ul{
+}
+.public_bar li{
+    float: left;
+    border: 1px solid #0c80d2;
+    box-sizing: border-box;
+    width: 100px;
+    text-align: center;
+}
+.public_bar li a{
+    font-size: 25px;
+    line-height: 60px;
+    text-decoration: none;
+    color: #1fff23;
+}
+.public_bar li a:hover{
+    color: #6e529f;
+}
+
+.hoverBox{
+    width: 100px;
+    height: 66px;
+    background: #6e529f;
+    opacity: 0.3;
+    position: absolute;
+    left: 0px;
+    top: -3px;
+}
+

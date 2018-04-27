@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--/*-->
+<!--1.Math.abs(x) 函数返回指定数字 “x“ 的绝对值-->
+<!--2.停止在目标点,最关键点-->
+<!--3.因为本例子是匀速运动停止，所以不要考虑取整，不要与之前的上下取整混淆-->
+<!--*/-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .div1{
+            width: 240px;
+            height: 240px;background: #1fff23;
+            position: absolute;
+            left: 200px;
+            top: 240px;
+        }
+        .div2{
+            width: 1000px;
+            height: 1px;
+            position: absolute;
+            left: 0px;
+            top: 240px;
+            background: black;
+        }
+        .div3{
+            width: 1000px;
+            height: 1px;
+            position: absolute;
+            top: 480px;
+            background: black;
+        }
+        .input1{
+            position: absolute;
+            top: 800px;
+            left: 900px;
+            float: left;
+        }
+        .input2{
+            position: absolute;
+            top: 800px;
+            left: 1000px;
+        }
+    </style>
+    <script>
+        var time =null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('div1');
+             clearInterval(time);
+            time=setInterval(function () {
+               var speed = 0;
+               if(oDiv.offsetTop<iTarget){
+                   speed=111;
+               }else {
+                   speed=-111;
+               }
+                if(Math.abs(iTarget - oDiv.offsetTop) >=speed){
+                      clearInterval(time);
+                    //........解决停止在目标点,最关键点
+                    oDiv.style.top=iTarget + 'px';
+                }else {
+                    oDiv.style.top = oDiv.offsetLeft + speed + 'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+<input class="input1" type="submit" id="btn"  value="开始运动240" onclick="startMove(0)">
+<input class="input2" type="submit" id="btn2" value="开始运动480" onclick="startMove(480)">
+<div class="div1" id="div1"></div>
+<div class="div2" id="div2"></div>
+<div class="div3" id="div3"></div>
+</body>
+</html>

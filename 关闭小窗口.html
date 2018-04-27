@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{
+            width: 240px;
+            height: 240px;
+            position: relative;
+            margin: 400px;
+            overflow: hidden;
+        }
+        .div a{
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            text-decoration: none;
+            color: red;
+        }
+    </style>
+    <script>
+        var time =null;
+        function startMove() {
+           var oDiv =document.getElementById('div');
+           clearInterval(time);
+           time=setInterval(function () {
+
+               oDiv.style.width = oDiv.offsetWidth - 60+ 'px';
+
+           },30);
+       }
+    </script>
+
+</head>
+<body>
+<div class="div" id="div">
+    <img src="gtl.gif"/>
+    <a href="javascript:;" onclick="startMove()">X</a>
+</div>
+</body>
+</html>

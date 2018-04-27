@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--1.Math.abs(x) 函数返回指定数字 “x“ 的绝对值-->
+<!--2.停止在目标点,最关键点-->
+<!--3.因为本例子是匀速运动停止，所以不要考虑取整，不要与之前的上下取整混淆-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动1</title>
+    <link rel="stylesheet" href="css.css">
+    <script>
+        var time =null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('hoverBox');
+             clearInterval(time);
+            time=setInterval(function () {
+               var speed = 0;
+               if(oDiv.offsetLeft<iTarget){
+                   speed=21;
+               }else {
+                   speed=-21;
+               }
+                if(Math.abs(iTarget - oDiv.offsetLeft) <=speed){
+                      clearInterval(time);
+                    //........解决停止在目标点,最关键点
+                    oDiv.style.left=iTarget + 'px';
+                }else {
+                    oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+<div class="public_bar">
+    <ul>
+        <li><a href="" onmousemove="startMove(0)">首页</a></li>
+        <li><a href="" onmousemove="startMove(100)">文章</a></li>
+        <li><a href="" onmousemove="startMove(200)">运动</a></li>
+        <li><a href="" onmousemove="startMove(300)">活动</a></li>
+        <li><a href="" onmousemove="startMove(400)">关于</a></li>
+    </ul>
+    <div class="hoverBox" id="hoverBox"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0;
+        }
+       .div1{
+           width: 240px;
+           height: 240px;
+           position: relative;
+       }
+        .div1 span{
+            position: absolute;
+            left: 30px;
+            bottom: 20px;
+            font-size: 30px;
+            color: #1fff23;
+            cursor: pointer;
+        }
+        .div2{
+            position: absolute;
+            top: 240px;
+            left: 0px;
+            width: 240px;
+            height: 240px;
+            background: #9c9c9c;
+            opacity: 0.2;
+        }
+        /*.div2 p{*/
+            /*position: absolute;*/
+            /*left: 30px;*/
+            /*!*bottom: 50%;*!*/
+            /*font-size: 30px;*/
+            /*color: #f60a11;*/
+            /*cursor: pointer;*/
+            /*border-top: 2px solid white;*/
+            /*border-bottom: 2px solid white;*/
+            /*margin:100px auto;*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+<div class="div1" id="div1">
+    <img src="gtl.gif"/>
+    <span id="span">古天乐玩贪月</span>
+</div>
+<div class="div2" id="div2">
+    <!--<p>一刀99999级</p>-->
+</div>
+</body>
+<script>
+    window.onload=function (ev) {
+        var oDiv =document.getElementById('div2');
+        var oSpan =document.getElementById('span');
+        oSpan.onclick=function (ev2) {
+            startMove();
+        }
+    };
+    var time =null;
+    function startMove() {
+        var oDiv =document.getElementById('div2');
+        clearInterval(time);
+        time=setInterval(function () {
+            speed = 10;
+            if (oDiv.style.top >=500){
+                clearInterval(time);
+            }else {
+                oDiv.style.top=oDiv.offsetTop + speed + "px";
+            }
+        },30);
+    }
+</script>
+</html>

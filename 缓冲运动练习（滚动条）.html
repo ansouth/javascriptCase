@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--注意问题：1.向上、向下取整-->
+          <!--2.鼠标移入层次z-index问题（重点）-->
+              <!--3.鼠标按下，色块停留在当前位置-->
+<!--结论：1.用闭包函数-->
+      <!--2.用穿透事件pointer-events解决z-index的问题-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .public_bar{
+            position: relative;
+            width: 500px;
+            height: 60px;
+            background: #cccccc;
+            margin: 20px 0 0 50px;
+            border: 1px solid #6e529f;
+        }
+        .public_bar ul{
+        }
+        .public_bar li{
+            float: left;
+            border-right: 1px solid #6e529f;
+            box-sizing: border-box;
+            width: 100px;
+            text-align: center;
+        }
+        .public_bar li:last-child{
+            border-right: none;
+        }
+        .public_bar li a{
+            font-size: 25px;
+            line-height: 60px;
+            text-decoration: none;
+            color: #1fff23;
+        }
+        .public_bar li a:hover{
+            color: #6e529f;
+        }
+        .active{
+            color: #6e529f;
+        }
+        .hoverBox{
+            transition: left 0.4s cubic-bezier(0.86, -0.21, 0.24, 1.23);
+            width: 80px;
+            height: 66px;
+            background: #6e529f;
+            opacity: 0.3;
+            position: absolute;
+            left: 10px;
+            top: -3px;
+            border-radius: 5px;
+            pointer-events:none;
+        }
+    </style>
+
+</head>
+<body>
+<div class="public_bar">
+    <ul>
+        <li><a href="" class="active">首页</a></li>
+        <li><a href="">文章</a></li>
+        <li><a href="">运动</a></li>
+        <li><a href="">活动</a></li>
+        <li><a href="">关于</a></li>
+    </ul>
+    <div class="hoverBox" id="hoverBox"></div>
+</div>
+    <script>
+        var oDiv = document.getElementById('hoverBox');
+        var oli = document.querySelectorAll('.public_bar ul li');
+
+        for (var i =0;i<oli.length;i++){
+
+            (function () {
+                var p = i;
+                oli[p].onmousemove = function () {
+                    oDiv.style.left = p*100+10+'px';
+                };
+                oli[p].onmouseout = function () {
+                    oDiv.style.left = '10px';
+                };
+            })();
+        }
+    </script>
+</body>
+</html>

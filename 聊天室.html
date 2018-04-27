@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>聊天室</title>
     <style>
-        .box {border:1px dashed black; position:absolute;}
+        .box{border:1px dashed black; position:absolute;}
+        *{
+            list-style: none;
+        }
         input,body,div{
             margin: 0;
             padding: 0;
@@ -33,6 +36,7 @@
             width: 700px;
             height: 340px;
             background: #f3ffff;
+            overflow-y: auto;
         }
         .chat_frame_mes_ipt{
             position: relative;
@@ -60,19 +64,20 @@
     <script>
         window.onload=function ()
         {
-            var oDiv=document.getElementById('chat_frame');
+            var oDiv=document.getElementById('chatFrame');
+            var oDrag = document.getElementById('drag');
 
             var disX=0;
             var disY=0;
 
-            oDiv.onmousedown=function (ev)
+            oDrag.onmousedown=function (ev)
             {
                 var oEvent=ev||event;
 
                 disX=oEvent.clientX-oDiv.offsetLeft;
                 disY=oEvent.clientY-oDiv.offsetTop;
 
-                var oBox=document.createElement('chat_frame');
+                var oBox=document.createElement('div');
 
                 oBox.className='box';
                 oBox.style.width=oDiv.offsetWidth-2+'px';
@@ -109,17 +114,18 @@
         };
     </script>
 </head>
+
 <body>
-<div class="chat_frame" id="chat_frame">
-    <div class="chat_frame_top">
-         <span>让我们一起聊天吧</span>
+<div class="chat_frame" id="chatFrame">
+    <div class="chat_frame_top" id="drag">
+        <span>来一起聊天吧</span>
     </div>
     <div class="chat_frame_notes" id="incomingChatMessages">
 
     </div>
     <div class="chat_frame_mes_ipt">
         <input class="text" type="text" id="outgoingChatMessage">
-        <input class="btn" type="submit" value="发送" >
+        <input class="btn" type="submit" onclick="sendMsg()" value="发送" >
     </div>
 </div>
 </body>

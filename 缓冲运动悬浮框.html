@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲悬浮框</title>
+    <style>
+        .div1{
+            width: 300px;
+            height: 300px;background: #1fff23;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    #text{
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+    </style>
+    <script>
+        //onscroll元素滚动触发事件
+        window.onscroll=function () {
+            var oDiv = document.getElementById('div1');
+            var scrollTop = document.documentElement.scrollTop ||document.body.scrollTop;
+            //scrollTop对象的最顶部到对象在当前窗口显示的范围内的顶边的距离．
+            // oDiv.style.top=document.documentElement.clientHeight - oDiv.offsetHeight + scrollTop + 'px';
+            startMove(parseInt((document.documentElement.clientHeight - oDiv.offsetHeight)/2 + scrollTop));
+            //这里除以2以后可能会产生小数，所以这里必须取整parseInt
+        };
+
+        var time=null;
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('div1');
+            clearInterval(time);
+            time=setInterval(function () {
+                var speed=(iTarget - oDiv.offsetTop)/5;
+                speed = speed>0? Math.ceil(speed):Math.floor(speed);
+                if(oDiv.offsetTop==iTarget){
+                    clearInterval(time);
+                }else {
+                    oDiv.style.top = oDiv.offsetTop + speed + 'px';
+                }
+                document.getElementById('text').value=oDiv.offsetTop +',' +speed;
+            },30);
+        }
+    </script>
+</head>
+<body style="height: 20000px">
+<input type="text" id="text">
+<div class="div1" id="div1"></div>
+</body>
+</html>
