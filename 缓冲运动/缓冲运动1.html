@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓冲运动练习</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 240px;
+            height: 240px;
+            position: relative;
+            border: 1px solid #000;
+            float: left;
+            margin-left: 10px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .div1{
+            width: 240px;
+            height: 240px;
+            position: absolute;
+            left: 0px;
+            top: 240px;
+            cursor: pointer;
+        }
+        .div2{
+            width: 1000px;
+            height: 1px;
+            position: absolute;
+            left: 0px;
+            top: 240px;
+            background: black;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="box" id="box">
+  <div class="div1" id="div1"><img src="../gtl.gif"/></div>
+</div>
+<div class="box" id="box1">
+    <div class="div1" id="div2"><img src="../gtl.gif"/></div>
+</div>
+<div class="box" id="box2">
+    <div class="div1" id="div3"><img src="../gtl.gif"/></div>
+</div>
+<div class="div2"></div>
+</body>
+<script>
+    window.onload=function (ev) {
+        var oBox =document.getElementById('box');
+
+
+        oBox.onmouseover=function (ev2) {
+            startMove(0);
+        };
+        oBox.onmouseout=function (ev2) {
+            startMove(240);
+        };
+
+    };
+    var time =null;
+    function startMove(iTarget) {
+        var oDiv = document.getElementById('div1');
+        clearInterval(time);
+        time=setInterval(function () {
+            var speed =(iTarget-oDiv.offsetTop)/10;
+
+            if(oDiv.style.top ==iTarget){
+                clearInterval(time);
+            }else {
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                oDiv.style.top = oDiv.offsetTop + speed +'px';
+            }
+            document.title=oDiv.offsetTop + ','+ speed;
+        },30);
+    }
+</script>
+</html>

@@ -1,0 +1,73 @@
+body{
+    height: 3000px;
+}
+.toolbar{
+   position: fixed;
+    left: 80%;
+    bottom: 20%;
+    margin-left: -26px;
+}
+.toolbar_item{
+    position: relative;
+     display: block;
+    width: 52px;
+    height: 52px;
+    background:url("img/tool_bar.png")no-repeat ;
+    margin-top: 1px;
+}
+
+.toolbar_item_weixin:hover  .toolbar_layer{
+    opacity: 1;
+    transform: scale(1);
+}
+.toolbar_item_app:hover  .toolbar_layer{
+    opacity: 1;
+    transform: scale(1);
+}
+.toolbar_item_weixin{
+    background-position: 0 -798px;
+}
+.toolbar_item_weixin:hover{
+    background-position: 0 -860px;
+}
+.toolbar_item_weixin .toolbar_layer{
+    height: 212px;
+    background-position: 0 0;
+}
+.toolbar_item_facebook{
+    background-position: 0 -426px;
+}
+.toolbar_item_facebook:hover{
+    background-position: 0 -488px;
+}
+.toolbar_item_app{
+    background-position: 0 -550px;
+}
+.toolbar_item_app:hover{
+    background-position: 0 -612px;
+}
+.toolbar_item_app .toolbar_layer{
+    height: 194px;
+    background-position:0 -222px;
+}
+.toolbar_item_top{
+    background-position: 0 -674px;
+}
+.toolbar_item_top:hover{
+    background-position: 0 -736px;
+}
+.toolbar_layer{
+    position: absolute;
+    right: 47px;
+    bottom: -10px;
+    width: 172px;
+    background: url("img/tool_bar.png")no-repeat;
+    opacity: 0;
+    transform: scale(0.01);
+}
+.top{
+    position: fixed;
+    left: 50%;
+    top: 5px;
+    margin-left: -26px;
+}

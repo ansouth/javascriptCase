@@ -26,7 +26,7 @@
             position: absolute;
             left: 200px;
             top: 0px;
-            overflow: hidden;
+            /*overflow: hidden;*/
         }
         .div2{
             width: 1000px;
@@ -48,34 +48,36 @@
     <script>
         window.onload=function (ev) {
             var oDiv = document.getElementById('div');
+            var oDivo = document.getElementById('div1');
+            var tt,time;
+
             oDiv.onmouseover=function () {
-                startMove(0);
+                clearInterval(tt);
+                time=setInterval(function () {
+                    console.log(oDivo.offsetTop)
+                    if(oDivo.offsetTop <=0){
+                        clearInterval(time);
+                        oDivo.offsetTop = 0;
+                    }else {
+                        oDivo.style.top = oDivo.offsetTop - 1 + 'px';
+                    }
+
+                },30);
+
             };
             oDiv.onmouseout=function () {
-                startMove(240);
+                clearInterval(time);
+                tt=setInterval(function () {
+                    if(oDivo.offsetTop >=240){
+                        oDivo.offsetTop =240;
+                        clearInterval(tt);
+                    }else {
+                        oDivo.style.top = oDivo.offsetTop + 1 + 'px';
+                    }
+
+                },30);
             }
         };
-
-        var time =null;
-        function startMove(iTarget) {
-            var oDiv = document.getElementById('div1');
-             clearInterval(time);
-            time=setInterval(function () {
-               var speed = 0;
-               if(oDiv.offsetTop<iTarget){
-                   speed=2;
-               }else {
-                   speed=-2;
-               }
-                if(Math.abs(iTarget - oDiv.offsetTop) >=speed){
-                      clearInterval(time);
-                    //........解决停止在目标点,最关键点
-                    oDiv.style.top=iTarget + 'px';
-                }else {
-                    oDiv.style.top = oDiv.offsetLeft + speed + 'px';
-                }
-            },3);
-        }
     </script>
 </head>
 <body>

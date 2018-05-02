@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 150px;
+            border: 1px solid black;
+        }
+        .img{
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            background: #1fff23;
+        }
+    </style>
+</head>
+<body>
+<input type="submit" value="向上" id="btn1">
+<div class="box" id="box">
+<div class="img" style="background:black "></div>
+<div class="img" style="background: #0c80d2"></div>
+<div class="img" style="background: #9c4336"></div>
+<div class="img"></div>
+</div>
+<input type="submit" value="向下" id="btn2">
+</body>
+<script>
+     function starMove() {
+         var oBox = document.getElementById('box');
+         var aDiv = oBox.getElementsByTagName('div');
+         var oBtn = document.getElementById('btn2');
+         oBox.onclick=function (ev) {
+             for (var i=0;i<aDiv.length;i++){
+                 aDiv[i].style.top=aDiv[i].offsetTop + 10 +'px';
+             }
+         }
+     }
+</script>
+</html>

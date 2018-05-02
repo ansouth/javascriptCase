@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部</title>
+    <link rel="stylesheet" href="toolbar.css">
+</head>
+<body>
+<div class="toolbar">
+    <a href="javascript:;" class="toolbar_item  toolbar_item_weixin">
+        <span class="toolbar_layer"></span>
+    </a>
+    <a href="javascript:;" class="toolbar_item  toolbar_item_facebook"></a>
+    <a href="javascript:;" class="toolbar_item  toolbar_item_app">
+        <span class="toolbar_layer"></span>
+    </a>
+    <a href="javascript:;" class="toolbar_item  toolbar_item_top" id="top"></a>
+</div>
+</body>
+<script>
+    var timer = null;
+    top.onclick = function(){
+        cancelAnimationFrame(timer);
+        timer = requestAnimationFrame(function fn(){
+            var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+            if(oTop > 0){
+                document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+                timer = requestAnimationFrame(fn);
+            }else{
+                cancelAnimationFrame(timer);
+            }
+        });
+    }
+</script>
+</html>
