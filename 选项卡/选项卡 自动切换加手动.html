@@ -2,7 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>选项卡</title>
+    <title>选项卡 延迟</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .select-item{
+            height: 300px;
+            width: 550px;
+            border: 1px solid gray;
+            position: relative;
+            margin: 200px;
+            overflow: hidden;
+        }
+        .select-item-left{
+            height: 300px;
+            width: 150px;
+            background: #9c9c9c;
+            float: left;
+            box-sizing: border-box;
+        }
+        .select-item-left li{
+            line-height: 60px;
+        }
+        .select-item-left li a{
+            font-size: 23px;
+            padding-left: 10px;
+        }
+        .select-item-right{
+            height: 300px;
+            width: 400px;
+            background: #fff;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        .select-item-right .select-con{
+            height: 280px;
+            width: 400px;
+            background: #fff;
+            margin-top: 10px;
+        }
+        .select-item-right .select-con li{
+            line-height: 40px;    padding-left: 10px;
+        }
+        .select-item-right .select-con li a{
+            font-size: 20px;
+        }
+        .select{
+            background: #fff;
+        }
+    </style>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -75,5 +128,55 @@
     </div>
 </div>
 </body>
-<script src="index.js"></script>
+<script>
+
+    window.onload=function () {
+        startMove();
+    };
+function startMove() {
+    var index = 0;
+    var timer = null;
+
+    var lis = document.querySelectorAll('#notice-title ul li');
+    var divs = document.querySelectorAll('#notice-con div');
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].id=i;
+        lis[i].onmouseover=function () {
+            clearInterval(timer);
+           change(this.id);
+        };
+        lis[i].onmouseout=function (){
+            timer=setInterval(autoMove,2000);
+        };
+    }
+
+    //解决鼠标不停经过 会开很多定时器的问题
+    if(timer){
+        timer=null;
+        clearInterval(timer);
+    }
+
+    timer=setInterval(autoMove,2000);
+    function autoMove() {
+        index++;
+        if(index>=lis.length){
+            index=0;
+        }
+        change(index);
+    }
+
+
+    function change(cur) {
+        for(var i=0;i<lis.length;i++){
+            lis[i].className='';
+            divs[i].style.display='none';
+        }
+        lis[cur].className='select';
+        divs[cur].style.display='block';
+        index=cur;//解决鼠标离开不执行鼠标离开的下一个页面的bug
+    }
+}
+
+</script>
 </html>
