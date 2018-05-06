@@ -51,6 +51,7 @@
     position: absolute;
     right: 0px;
     bottom: 0px;
+    z-index: 5;
 }
 #right_float #close_btn1{
     width: 30px;
@@ -59,7 +60,8 @@
     position: relative;
     display: inline-block;
     top: 5px;
-    right: 5px;
+    left: 5px;
+    z-index: 5;
 }
 #right_ad{
     width: 300px;

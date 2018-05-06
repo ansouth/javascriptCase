@@ -13,6 +13,20 @@
         oDiv.className = '';
     },3000);
 
+// Right侧边栏广告提示?
+var oright_float = document.getElementById('right_float');
+var oclose_btn1 = document.getElementById('close_btn1');
+
+oclose_btn1.onclick=function (ev2) {
+    //第一种方法隐藏
+    // oDiv.style.display = 'none';
+    //第二种方法隐藏
+    oright_float.className = 'hidden';
+};
+setTimeout(function () {
+    oDiv.className = '';
+},3000);
+
 // LEFT侧边栏广告提示?
 
     var oDiv1 = document.getElementById('left_ad');
