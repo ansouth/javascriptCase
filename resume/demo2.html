@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .cont{
+            margin: 100px auto;
+            width: 300px;
+            height: 300px;
+        }
+        .pic{
+            width: 200px;
+            height: 200px;
+            background: url("img/head.png");
+            background-size: cover;
+            border-radius: 1000px;
+            margin: 0 auto;
+        }
+        .btn{
+            width:40px;
+            height: 30px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 10px;
+            background-color: #f5b702;
+        }
+    </style>
+    <script>
+window.onload=function () {
+
+    var current = 0;
+    var time =null;
+    var pic = document.getElementById('pic');
+    pic.onmouseover = function(){
+        clearInterval(time);
+        time=setInterval(function () {
+            current +=10;
+            pic.style.transform = 'rotate('+current+'deg)';
+        },100)
+    }
+}
+
+    </script>
+</head>
+<body>
+<div class="cont">
+    <div class="pic" id="pic">
+
+    </div>
+
+</div>
+</body>
+</html>
